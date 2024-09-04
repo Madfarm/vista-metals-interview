@@ -12,3 +12,23 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Order {
+  id  Int @id@default(autoincrement())
+  orderNumber Int
+  customerName String
+  contact String
+  status String
+  orderTotal Float
+  items Item[]
+}
+
+model Item {
+  id Int @id@default(autoincrement())
+  lineNumber Int
+  name String
+  quantity Int
+  price Float
+  requestedDate DateTime @default(now())
+  orders Order[]
+}

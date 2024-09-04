@@ -30,5 +30,6 @@ model Item {
   quantity Int
   price Float
   requestedDate DateTime @default(now())
-  orders Order[]
+  order Order @relation(fields: [orderId], references: [id])
+  orderId Int
 }

@@ -22,7 +22,9 @@ export async function GET(NextRequest: Request) {
             ...seedData.orders[1],
             items: {
                 create: [
-                    {...seedData.items[1]}
+                    {...seedData.items[1]},
+                    {...seedData.items[2]},
+                    {...seedData.items[3]},
                 ]
             }
         },

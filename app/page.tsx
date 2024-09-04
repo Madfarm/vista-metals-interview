@@ -1,10 +1,12 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { homePageService } from "./home.service";
 
-export default function Home() {
+export default async function Home() {
+  const { openOrdersCount } = await homePageService();
+
   return (
     <main>
-      
+      <h1>Orders currently open: </h1>
+      <h2>{openOrdersCount}</h2>
     </main>
   );
 }

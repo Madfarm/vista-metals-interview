@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { homePageService } from "./home.service";
 
 export default async function Home() {
@@ -7,6 +8,8 @@ export default async function Home() {
     <main>
       <h1>Orders currently open: </h1>
       <h2>{openOrdersCount}</h2>
+
+      <Link href='/order/new'>Add an Order</Link>
     </main>
   );
 }

@@ -1,0 +1,6 @@
+.NavBar {
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #8a969a;
+}

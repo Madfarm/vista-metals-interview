@@ -29,7 +29,7 @@ export default function OrdersGrid(props: {orders: OrderType[]}) {
     return (
         <div
             className='ag-theme-quartz-dark'
-            style={{ width: 1002, height: 278}}
+            style={{ width: 1002, height: 330}}
         >
             <AgGridReact 
                 rowData={rowData}
@@ -40,6 +40,9 @@ export default function OrdersGrid(props: {orders: OrderType[]}) {
                       alignItems: "center"
                     })
                 }}
+                pagination={true}
+                paginationPageSize={5}
+                paginationPageSizeSelector={[5, 10, 25]}
             />
             
         </div>

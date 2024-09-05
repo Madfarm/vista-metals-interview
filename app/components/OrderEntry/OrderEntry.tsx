@@ -2,6 +2,7 @@
 
 import { ItemType } from "@/app/home.types";
 import useOrderEntryForm from "./OrderEntry.service"
+import { useEffect } from "react";
 
 
 
@@ -14,13 +15,27 @@ export default function OrderEntry(props: {items: ItemType[]}) {
         handleItemChange,
         newItem,
         handleAddItem,
-        currentItems 
+        currentItems,
+        setFormData
     } = useOrderEntryForm(props.items);
-    
+
+    useEffect(() => {
+        const totalPrice = Number(currentItems.reduce((total, item) => total + (item.price * item.quantity), 0.0).toFixed(2));
+        setFormData({...formData, ["items"]: currentItems, orderTotal: totalPrice});
+    }, [currentItems])
 
     return (
         <div>
-            <form>
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label>Order Number: </label>
+                    <input
+                        type="number"
+                        name="orderNumber"
+                        value={formData.orderNumber}
+                        onChange={handleChange}
+                        />
+                </div>
                 <div>
                     <label>Customer Name: </label>
                     <input
@@ -64,20 +79,36 @@ export default function OrderEntry(props: {items: ItemType[]}) {
                             <option value={item.name} key={i}>{item.name}</option>
                         ))}
                     </select>
-                    <button onClick={handleAddItem}>Add Item</button>
 
+                    <label>Quantity:</label>
+                    <input 
+                        type="number"
+                        onChange={handleItemChange}
+                        defaultValue={newItem.quantity} 
+                        name="itemQuantity"
+                    />
+                    <button onClick={handleAddItem}>Add Item</button>
                 </label>
+
+                
+                <h2>Current Order: </h2>
+                <ul>
+                    {currentItems.length > 0 ? (
+                        currentItems.map((item, i) => (
+                            <li key={i}>{item.quantity} x {item.name}</li>
+                        ))
+                    ) : (
+                        <p>There are no items in the order yet</p>
+                    )}
+                </ul>
+                <h2>Order Total: ${formData.orderTotal}</h2>
+
+                <div>
+                    <button type="submit">Create Order</button>
+                </div>
             </form>
 
-            <ul>
-                {currentItems.length > 0 ? (
-                    currentItems.map((item) => (
-                        <li key={item.id}>{item.quantity} x {item.name}</li>
-                    ))
-                ) : (
-                    <p>There are no items in the order yet</p>
-                )}
-            </ul>
+            
         </div>
     )
 }

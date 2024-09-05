@@ -1,6 +1,6 @@
-import Link from "next/link"
 import { orderDetailsService } from "./OrderDetails.service"
 import EditOrderForm from "@/app/components/EditOrderForm/EditOrderForm"
+import styles from './OrderDetails.module.css'
 
 export default async function OrderDetailsPage({ params }: {params: {id: number}}) {
     const { order } = await orderDetailsService(params.id)
@@ -8,8 +8,9 @@ export default async function OrderDetailsPage({ params }: {params: {id: number}
     if (order == null) {
         return <h1>No order found</h1>
     }
+    
     return (
-        <main>
+        <main className={styles.container}>
             <h1>Order Number: {order.orderNumber}</h1>
             
             <EditOrderForm order={order}/>

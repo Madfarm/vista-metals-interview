@@ -6,4 +6,6 @@
     display: flex;
     justify-content: space-evenly;
     align-items: end;
+
+    margin-top: 1vh;
 }

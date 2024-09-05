@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ItemFormType, OrderEntryForm } from "./OrderEntry.types";
+import { OrderEntryForm } from "./OrderEntry.types";
 import { ItemType } from "@/app/home.types";
 import { createOrder } from "./OrderEntry.actions";
 
@@ -33,7 +33,10 @@ export default function useOrderEntryForm(items: ItemType[]) {
     })
 
     
-
+    /**
+     * Custom handleChange function to grab the full contents of Items to create relation in Prisma.
+     * parseInt is used here because it allows the quantity input field to be empty
+     */
     function handleItemChange(e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) {
         let itemToAdd: ItemType = { ...newItem };
         if (e.target.name == "itemName") {

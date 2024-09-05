@@ -17,8 +17,8 @@ export function LinkComponent(props: ICellRendererParams) {
 
 
 export default function OrdersGrid(props: {orders: OrderType[]}) {
-    const [rowData, setRowData] = useState<OrderType[]>(props.orders)
-    const [colDefs, setColDefs] = useState<ColDef[]>([
+    const [rowData] = useState<OrderType[]>(props.orders)
+    const [colDefs] = useState<ColDef[]>([
         { field: "orderNumber", cellRenderer: LinkComponent},
         { field: "customerName"},
         { field: "contact"},

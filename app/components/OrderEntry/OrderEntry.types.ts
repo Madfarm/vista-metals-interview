@@ -9,12 +9,3 @@ export type OrderEntryForm = {
     orderTotal: number
 }
 
-export interface ItemFormType {
-    id: number,
-    lineNumber: number,
-    name: string,
-    quantity: number | undefined,
-    price: number,
-    requestedDate: Date,
-    orderId: number,
-}

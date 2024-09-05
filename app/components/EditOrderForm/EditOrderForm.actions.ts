@@ -3,11 +3,11 @@
 import { prisma } from "@/lib/prisma"
 import { EditOrderFormType } from "./EditOrderForm.types";
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+
 
 export async function updateOrder(id: number, body: EditOrderFormType) {
     try {
-        const updatedOrder = await prisma.order.update({
+        await prisma.order.update({
             where: {
                 id: id
             },

@@ -1,15 +1,25 @@
 import { prisma } from '@/lib/prisma'
-import { OrderType } from '@/app/home.types'
 
 export async function orderDetailsService(id: number) {
-    let order = await prisma.order.findUnique({
-        where: {
-            id: Number(id)
-        },
-        include: {
-            items: true
-        }
-    })
+    try {
+        let order = await prisma.order.findUnique({
+            where: {
+                id: Number(id)
+            },
+            include: {
+                items: true
+            }
+        })
 
-    return { order }
+        return  { order }
+    } catch(err: unknown) {
+        if (typeof err == "string") {
+            console.error(err.toUpperCase());
+        } else if (err instanceof Error) {
+            console.error(err.message)
+        }
+
+        throw err;
+    }
+
 }

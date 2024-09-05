@@ -3,6 +3,7 @@
 import { ItemType } from "@/app/home.types";
 import useOrderEntryForm from "./OrderEntry.service"
 import { useEffect } from "react";
+import styles from './OrderEntry.module.css'
 
 
 
@@ -16,7 +17,8 @@ export default function OrderEntry(props: {items: ItemType[]}) {
         newItem,
         handleAddItem,
         currentItems,
-        setFormData
+        setFormData,
+        errorMessages
     } = useOrderEntryForm(props.items);
 
     useEffect(() => {
@@ -89,7 +91,8 @@ export default function OrderEntry(props: {items: ItemType[]}) {
                     />
                     <button onClick={handleAddItem}>Add Item</button>
                 </label>
-
+                
+                <p className={styles.Error}>{errorMessages}</p>
                 
                 <h2>Current Order: </h2>
                 <ul>

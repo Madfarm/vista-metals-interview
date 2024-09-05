@@ -18,6 +18,7 @@ export default function useOrderEntryForm(items: ItemType[]) {
     
     const [currentItems, setCurrentItems] = useState<ItemType[]>([]);
     const [newItem, setNewItem] = useState<ItemType>(uniqueItems[0])
+    const [errorMessages, setErrorMessages] = useState<string>("");
 
    
 
@@ -44,6 +45,12 @@ export default function useOrderEntryForm(items: ItemType[]) {
 
     function handleAddItem(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
+
+        if(newItem.quantity < 1) {
+            setErrorMessages("Quantity must be greater than 0")
+            return;
+        }
+
         setCurrentItems([...currentItems, {...newItem, "quantity": newItem.quantity}])
     }
 
@@ -56,9 +63,15 @@ export default function useOrderEntryForm(items: ItemType[]) {
     function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
+        if(formData.orderTotal < 1) {
+            setErrorMessages("You must add items to create an order");
+            return;
+        }
+
         
+
         createOrder(formData);
     }
 
-    return { formData, handleChange , handleSubmit, uniqueItems, handleItemChange, newItem, handleAddItem, currentItems, setFormData }
+    return { formData, handleChange , handleSubmit, uniqueItems, handleItemChange, newItem, handleAddItem, currentItems, setFormData, errorMessages }
 }

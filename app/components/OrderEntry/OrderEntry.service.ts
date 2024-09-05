@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { OrderEntryForm } from "./OrderEntry.types";
+import { ItemFormType, OrderEntryForm } from "./OrderEntry.types";
 import { ItemType } from "@/app/home.types";
 import { createOrder } from "./OrderEntry.actions";
 
@@ -35,11 +35,11 @@ export default function useOrderEntryForm(items: ItemType[]) {
     
 
     function handleItemChange(e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) {
-        let itemToAdd = newItem;
+        let itemToAdd: ItemType = { ...newItem };
         if (e.target.name == "itemName") {
             itemToAdd = (uniqueItems.filter((obj: ItemType) => obj.name === e.target.value))[0]
         } else if (e.target.name == "itemQuantity") {
-            itemToAdd.quantity = Number(e.target.value);
+            itemToAdd.quantity = parseInt(e.target.value);
         }
         setNewItem(itemToAdd)
     }
@@ -47,7 +47,7 @@ export default function useOrderEntryForm(items: ItemType[]) {
     function handleAddItem(e: React.MouseEvent<HTMLButtonElement>) {
         e.preventDefault();
 
-        if(newItem.quantity < 1) {
+        if(newItem.quantity < 1 ) {
             setErrorMessages("Quantity must be greater than 0")
             return;
         }

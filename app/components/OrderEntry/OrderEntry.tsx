@@ -90,7 +90,7 @@ export default function OrderEntry(props: {items: ItemType[]}) {
                     <input 
                         type="number"
                         onChange={handleItemChange}
-                        defaultValue={newItem.quantity} 
+                        value={newItem.quantity}
                         name="itemQuantity"
                     />
                     <button onClick={handleAddItem}>Add Item</button>

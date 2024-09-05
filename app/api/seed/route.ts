@@ -30,5 +30,49 @@ export async function GET(NextRequest: Request) {
         },
     });
 
-    return Response.json([{ ...createdOrder }, {...createdOrder1 }]);
+    const createdOrder2 = await prisma.order.create({
+        data: {
+            ...seedData.orders[2],
+            items: {
+                create: [
+                    {...seedData.items[0]},
+                    {...seedData.items[2]},
+                    {...seedData.items[3]},
+                ]
+            }
+        },
+    });
+
+    const createdOrder3 = await prisma.order.create({
+        data: {
+            ...seedData.orders[3],
+            items: {
+                create: [
+                    {...seedData.items[0]},
+                    {...seedData.items[4]},
+                ]
+            }
+        },
+    });
+
+    const createdOrder4 = await prisma.order.create({
+        data: {
+            ...seedData.orders[4],
+            items: {
+                create: [
+                    {...seedData.items[1]},
+                    {...seedData.items[4]},
+                    {...seedData.items[3]},
+                ]
+            }
+        },
+    });
+
+    return Response.json([
+        { ...createdOrder },
+        { ...createdOrder1 },
+        { ...createdOrder2 },
+        { ...createdOrder3 },
+        { ...createdOrder4 },
+    ]);
 }

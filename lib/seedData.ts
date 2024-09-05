@@ -24,6 +24,12 @@ export const seedData = {
             quantity: 30,
             price: 0.39,
         },
+        {
+            lineNumber: 4,
+            name: "Disinfectant (1L)",
+            quantity: 5,
+            price: 5.43,
+        },
 
     ],
     orders: [
@@ -32,14 +38,35 @@ export const seedData = {
             customerName: "Jeff",
             contact: "jeffemail@email.com",
             status: "Open",
-            orderTotal: 51.92,
+            orderTotal: 29.80,
         },
         {
             orderNumber: 511,
             customerName: "Alex",
             contact: "alexemail@email.com",
             status: "Open",
-            orderTotal: 34.90,
-        }
+            orderTotal: 38.16,
+        },
+        {
+            orderNumber: 517,
+            customerName: "George",
+            contact: "georgemail@aol.com",
+            status: "Picked",
+            orderTotal: 58.16,
+        },
+        {
+            orderNumber: 509,
+            customerName: "Paula",
+            contact: "paul5143@email.com",
+            status: "Closed",
+            orderTotal: 56.95,
+        },
+        {
+            orderNumber: 504,
+            customerName: "Lisa",
+            contact: "lisa.mgmt@email.com",
+            status: "Closed",
+            orderTotal: 48.65,
+        },
     ],
 }

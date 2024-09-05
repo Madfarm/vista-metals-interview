@@ -52,7 +52,9 @@ export default function useOrderEntryForm(items: ItemType[]) {
             return;
         }
 
+
         setCurrentItems([...currentItems, {...newItem, "quantity": newItem.quantity}])
+        setErrorMessages("");
     }
 
     

@@ -68,5 +68,12 @@ export const seedData = {
             status: "Closed",
             orderTotal: 48.65,
         },
+        {
+            orderNumber: 513,
+            customerName: "Amanda",
+            contact: "amanda.coo@email.com",
+            status: "Picked",
+            orderTotal: 48.65,
+        },
     ],
 }

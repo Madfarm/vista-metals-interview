@@ -68,11 +68,25 @@ export async function GET(NextRequest: Request) {
         },
     });
 
+    const createdOrder5 = await prisma.order.create({
+        data: {
+            ...seedData.orders[5],
+            items: {
+                create: [
+                    {...seedData.items[1]},
+                    {...seedData.items[4]},
+                    {...seedData.items[3]},
+                ]
+            }
+        },
+    });
+
     return Response.json([
         { ...createdOrder },
         { ...createdOrder1 },
         { ...createdOrder2 },
         { ...createdOrder3 },
         { ...createdOrder4 },
+        { ...createdOrder5 },
     ]);
 }

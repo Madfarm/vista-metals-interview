@@ -1,6 +1,7 @@
 .NavBar {
     min-height: 10vh;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    align-items: center;
     background-color: #8a969a;
 }

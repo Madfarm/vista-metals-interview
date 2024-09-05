@@ -1,5 +1,4 @@
 import { prisma } from '@/lib/prisma'
-import { OrderType } from './home.types'
 
 export async function homePageService() {
     const query = {

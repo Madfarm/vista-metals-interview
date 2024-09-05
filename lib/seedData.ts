@@ -7,7 +7,7 @@ export const seedData = {
             price: 2.98,
         },
         {
-            lineNumber: 19,
+            lineNumber: 20,
             name: "Broom",
             quantity: 10,
             price: 0.98,
@@ -16,7 +16,7 @@ export const seedData = {
             lineNumber: 20,
             name: "Broom",
             quantity: 17,
-            price: 6.97,
+            price: 0.98,
         },
         {
             lineNumber: 5,

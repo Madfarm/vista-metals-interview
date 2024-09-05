@@ -4,10 +4,11 @@ import { ItemType } from "@/app/home.types";
 import { createOrder } from "./OrderEntry.actions";
 
 export default function useOrderEntryForm(items: ItemType[]) {
+    // Get unique items by name for the Item selector
     const uniqueNames: Set<string> = new Set();
     const uniqueItems: ItemType[] = [];
 
-    // Get unique items by name, for future feature of allowing users to enter the quantity
+    
     for (const item of items) {
         if (!uniqueNames.has(item.name)) {
         uniqueNames.add(item.name);
@@ -69,7 +70,6 @@ export default function useOrderEntryForm(items: ItemType[]) {
         }
 
         
-
         createOrder(formData);
     }
 

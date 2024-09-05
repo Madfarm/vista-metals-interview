@@ -9,7 +9,7 @@ export default async function Home() {
       <h1>Orders currently open: </h1>
       <h2>{openOrdersCount}</h2>
 
-      <Link href='/order/new'>Add an Order</Link>
+      <Link href='/orders/new'>Add an Order</Link>
     </main>
   );
 }

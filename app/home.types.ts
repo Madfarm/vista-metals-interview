@@ -5,10 +5,10 @@ export type ItemType = {
     quantity: number,
     price: number,
     requestedDate: Date,
-    orderId: number
+    orderId: number,
 }
 
-export type OrderType = {
+export interface OrderType {
     id: number,
     orderNumber: number
     customerName: string,

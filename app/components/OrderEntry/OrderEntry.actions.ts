@@ -7,8 +7,7 @@ import { redirect } from 'next/navigation'
 
 export async function createOrder(formData: OrderEntryForm){
     /**
-     * Removing id and timestamp attributes, so Prisma will create unique Item entries to track each order individually,
-     * and allow customers to order multiple batches of the same item
+     * Removing id and timestamp attributes, so Prisma will create unique Item entries to track each order individually
      */
     const itemsNoIdAndDate = formData.items.map(({id, requestedDate, orderId, ...keepAttrs}) => keepAttrs)
 

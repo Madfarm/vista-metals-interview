@@ -21,6 +21,10 @@ export default function OrderEntry(props: {items: ItemType[]}) {
         errorMessages
     } = useOrderEntryForm(props.items);
 
+    /**
+     * The formdata is set here in a useEffect because of setState being asynchronous. This ensures that when you click "Create Order"
+     * the state of the application is always in line with what is rendered in the UI.
+     */
     useEffect(() => {
         const totalPrice = Number(currentItems.reduce((total, item) => total + (item.price * item.quantity), 0.0).toFixed(2));
         setFormData({...formData, ["items"]: currentItems, orderTotal: totalPrice});

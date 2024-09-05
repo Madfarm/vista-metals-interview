@@ -5,11 +5,11 @@ export default function NavBar() {
     return (
         <nav className={styles.NavBar}>
             <div>
-                <Link href="/">Home</Link>
+                <Link className={styles.link} href="/">Home</Link>
             </div>
 
             <div>
-                <Link href="/orders">Orders</Link>
+                <Link className={styles.link} href="/orders">Orders</Link>
             </div>
 
         </nav>

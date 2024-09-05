@@ -4,4 +4,20 @@
     justify-content: space-between;
     align-items: center;
     background-color: #8a969a;
+
+    margin-bottom: 4vh;
+}
+
+.link {
+    margin-right: 1vw;
+    margin-left: 1vw;
+
+    color: black;
+    text-decoration: none;
+
+    font-size: 35px;
+}
+
+.link:hover {
+    opacity: 0.7;
 }

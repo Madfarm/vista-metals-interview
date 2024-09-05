@@ -29,7 +29,11 @@ export default function OrdersGrid(props: {orders: OrderType[]}) {
     return (
         <div
             className='ag-theme-quartz-dark'
-            style={{ width: 1002, height: 330}}
+            style={{ 
+                width: 1002,
+                height: 330,
+                margin: "0 auto"
+            }}
         >
             <AgGridReact 
                 rowData={rowData}

@@ -32,87 +32,92 @@ export default function OrderEntry(props: {items: ItemType[]}) {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className={styles.container}>
                 <div>
-                    <label>Order Number: </label>
-                    <input
-                        type="number"
-                        name="orderNumber"
-                        value={formData.orderNumber}
-                        onChange={handleChange}
-                        />
-                </div>
-                <div>
-                    <label>Customer Name: </label>
-                    <input
-                        type="text"
-                        name="customerName"
-                        value={formData.customerName}
-                        onChange={handleChange}
-                        />
+                    <div>
+                        <label>Order Number: </label>
+                        <input
+                            type="number"
+                            name="orderNumber"
+                            value={formData.orderNumber}
+                            onChange={handleChange}
+                            />
+                    </div>
+                    <div>
+                        <label>Customer Name: </label>
+                        <input
+                            type="text"
+                            name="customerName"
+                            value={formData.customerName}
+                            onChange={handleChange}
+                            />
+                    </div>
+
+                    <div>
+                        <label>Contact Info </label>
+                        <input
+                            type="text"
+                            name="contact"
+                            value={formData.contact}
+                            onChange={handleChange}
+                            />
+                    </div>
+
+                    <div>
+                        <label>Status: </label>
+                        <select
+                            value={formData.status}
+                            onChange={handleChange}
+                            name="status"
+                            >
+                            <option value="Open">Open</option>
+                            <option value="Picked">Picked</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </div>
+
+                    <label>Items: 
+                        <select
+                            onChange={handleItemChange}
+                            value={newItem.name}
+                            name="itemName"
+                            >
+                            {uniqueItems.map((item: ItemType, i: number) => (
+                                <option value={item.name} key={i}>{item.name}</option>
+                            ))}
+                        </select>
+
+                        <label>Quantity:</label>
+                        <input 
+                            type="number"
+                            onChange={handleItemChange}
+                            value={newItem.quantity}
+                            name="itemQuantity"
+                            />
+                        <button onClick={handleAddItem}>Add Item</button>
+                    </label>
+                    
+                    <p className={styles.Error}>{errorMessages}</p>
+                    
+                    <div>
+                        <button type="submit">Create Order</button>
+                    </div>
                 </div>
 
                 <div>
-                    <label>Contact Info </label>
-                    <input
-                        type="text"
-                        name="contact"
-                        value={formData.contact}
-                        onChange={handleChange}
-                        />
+                    <h2>Current Order: </h2>
+                    <ul>
+                        {currentItems.length > 0 ? (
+                            currentItems.map((item, i) => (
+                                <li key={i}>{item.quantity} x {item.name}</li>
+                            ))
+                        ) : (
+                            <p>There are no items in the order yet</p>
+                        )}
+                    </ul>
+                    <h2>Order Total: ${formData.orderTotal}</h2>
                 </div>
 
-                <div>
-                    <label>Status: </label>
-                    <select
-                        value={formData.status}
-                        onChange={handleChange}
-                        name="status"
-                        >
-                        <option value="Open">Open</option>
-                        <option value="Picked">Picked</option>
-                        <option value="Closed">Closed</option>
-                    </select>
-                </div>
-
-                <label>Items: 
-                    <select
-                        onChange={handleItemChange}
-                        value={newItem.name}
-                        name="itemName"
-                        >
-                        {uniqueItems.map((item: ItemType, i: number) => (
-                            <option value={item.name} key={i}>{item.name}</option>
-                        ))}
-                    </select>
-
-                    <label>Quantity:</label>
-                    <input 
-                        type="number"
-                        onChange={handleItemChange}
-                        value={newItem.quantity}
-                        name="itemQuantity"
-                    />
-                    <button onClick={handleAddItem}>Add Item</button>
-                </label>
-                
-                <p className={styles.Error}>{errorMessages}</p>
-                
-                <h2>Current Order: </h2>
-                <ul>
-                    {currentItems.length > 0 ? (
-                        currentItems.map((item, i) => (
-                            <li key={i}>{item.quantity} x {item.name}</li>
-                        ))
-                    ) : (
-                        <p>There are no items in the order yet</p>
-                    )}
-                </ul>
-                <h2>Order Total: ${formData.orderTotal}</h2>
-
-                <div>
-                    <button type="submit">Create Order</button>
-                </div>
             </form>
 
             
